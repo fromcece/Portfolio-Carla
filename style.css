@@ -1,0 +1,345 @@
+/* Font setup */
+
+@font-face {
+    font-family: 'Quicksand Dash';
+    src: url('fonts/Quicksand-Dash.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Now update your variables to use it */
+:root {
+    --title-font: 'Quicksand Dash', sans-serif;
+    --body-font: 'Apple Garamond', 'EB Garamond', 'Garamond', serif;
+}
+
+/* This ensures EVERY paragraph on the site uses your font */
+p {
+    font-family: var(--body-font) !important; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* This makes the "tabs" scroll smoothly */
+}
+
+/* Titles */
+h1, h2, .logo, nav a {
+    font-family: var(--title-font);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navigation Menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    position: fixed;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #888;
+}
+
+/* Sections */
+section {
+    padding: 120px 5% 60px 5%;
+    min-height: 90vh;
+    border-bottom: 1px solid #f0f0f0; /* Subtle divider for minimalist look */
+}
+#about {
+    padding: 120px 5%;
+}
+
+.about-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+#about p {
+    font-family: var(--body-font);
+    font-size: 1.15rem;
+    line-height: 2;         /* Slightly increased for that airy feel */
+    margin-bottom: 2rem;    /* The wide spacing you asked for */
+    color: #222;
+    hyphens: auto;
+}
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+p {
+    max-width: 650px;
+    margin: 0 auto; 1.5 rem
+    text-align: left;
+    font-size: 1.15 rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #444
+}
+
+.grid {
+    /* Instead of 'display: grid', we use 'columns' */
+    column-count: 2; /* Number of columns */
+    column-gap: 40px; /* Space between columns */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.grid img {
+    width: 100%;
+    height: auto; /* Respects the natural height of your photo */
+    display: block;
+    margin-bottom: 40px; /* Space between images vertically */
+    
+    /* Keep them static as you requested */
+    pointer-events: none;
+}
+
+
+    .extra-space {
+    margin-top: 150px; /* Adjust this number to get the exact gap you want */
+}
+
+/* On smaller screens (tablets/phones), switch to 1 column */
+@media (max-width: 768px) {
+    .grid {
+        column-count: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav ul {
+        gap: 10px;
+        padding: 0;
+    }
+}
+/* The Container */
+.split-layout {
+    display: flex;
+    align-items: center; /* Aligns text vertically with the middle of the photo */
+    gap: 80px;           /* Large minimalist gap between image and text */
+    max-width: 1100px;
+    margin: 100px auto;  /* Space above and below the split section */
+}
+
+/* The Image Side */
+.split-image {
+    flex: 1;             /* Takes up 50% of the width */
+}
+
+.split-image img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* The Text Side */
+.split-text {
+    flex: 1;             /* Takes up the other 50% */
+    text-align: left;    /* Standard editorial look */
+}
+
+.split-text h3 {
+    font-family: var(--title-font);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.split-text p {
+    font-family: var(--body-font);
+    text-align: justify; /* Matches your About section */
+    margin-bottom: 0;    /* Overrides the large bottom margin we set earlier */
+    margin-bottom: 2rem
+}
+
+/* Responsive: Stack them on top of each other on mobile */
+@media (max-width: 768px) {
+    .split-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .split-text {
+        text-align: center;
+    }
+}
+/* The stage for our overlap */
+.overlap-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 100px auto;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 60px; /* Adds extra room at the bottom so the PNG doesn't get cut off */
+}
+
+/* The two background images */
+.base-img {
+    width: 50%;
+    height: auto;
+    display: block;
+    opacity: 0.9; /* Slightly faded so the PNG pops */
+}
+
+/* The PNG that sits on top */
+.png-overlay {
+    position: absolute;
+    width: 1000px;       /* Adjust size as needed */
+    height: auto;
+    
+   /* Position it in the lower half */
+    bottom: -30%;    /* 5% distance from the bottom edge of the container */
+    left: 50%;     /* Moves it to the horizontal center */
+    transform: translateX(-50%); /* Perfectly centers it horizontally */
+    
+    z-index: 10;        /* Ensures it stays on top of everything else */
+    pointer-events: none;
+}
+
+/* Mobile Tweak: On phones, overlap can look messy, so we stack them */
+@media (max-width: 768px) {
+    .overlap-container {
+        flex-direction: column;
+    }
+    .png-overlay {
+        width: 1000px;
+        top: 25%; /* Moves it to overlap the first image specifically */
+    }
+}
+.hero {
+    width: 100%;
+    height: 100vh; /* This makes the header take up the full screen height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; /* Space for the fixed navigation menu */
+}
+
+.hero-content {
+    margin-bottom: 40px;
+}
+
+.hero-title {
+    font-family: var(--title-font); /* Quicksand Dash */
+    font-size: 4rem; /* Makes your name the focus */
+    letter-spacing: 8px;
+    margin: 0;
+}
+
+.hero-subtitle {
+    font-family: var(--body-font); /* Apple Garamond */
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.hero-image-container {
+    width: 80%; /* Limits width for a minimalist frame look */
+    max-width: 900px;
+    height: 2000vh; /* Adjust how tall the main image is */
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the photo fills the box elegantly */
+    pointer-events: none;
+}
+#contact {
+    padding: 150px 5%;
+    background-color: #fafafa; /* Very subtle grey to distinguish from the work sections */
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-intro {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    line-height: 1.8;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.contact-item {
+    font-family: var(--title-font); /* Quicksand Dash */
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Minimalist Underline Animation */
+.contact-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transition: width 0.4s ease;
+}
+
+.contact-item:hover::after {
+    width: 100%;
+}
+
+.location-stamp {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 100px;
+}
